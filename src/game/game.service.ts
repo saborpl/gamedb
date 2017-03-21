@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import { GameComponent } from './game.component';
 @Injectable()
 export class GameService {
-    private gamesUrl = 'api/games';  // URL to web API
+    private gamesUrl = 'http://www.giantbomb.com/api/game/3030-4725/?api_key=ba7f6d8f2c8745428376a7602ea0860bf0ed8364';  // URL to web API
     constructor(private http: Http) { }
     getGames(): Observable<GameService[]> {
         return this.http.get(this.gamesUrl)
@@ -15,6 +15,7 @@ export class GameService {
     }
     private extractData(res: Response) {
         let body = res.json();
+        console.log(body.data);
         return body.data || {};
     }
     private handleError(error: Response | any) {
