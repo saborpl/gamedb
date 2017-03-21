@@ -1,0 +1,10 @@
+<div class="game">
+    <h1>Tour of Games ({{mode}})</h1>
+    <h3>Games:</h3>
+    <ul>
+        <li *ngFor="let game of games">{{game.name}}</li>
+    </ul>
+    <label>New game name: <input #newGameName /></label>
+    <button (click)="addGame(newGameName.value); newGameName.value=''">Add Game</button>
+    <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+</div>
